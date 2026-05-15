@@ -74,6 +74,39 @@ const leadership = [
   },
 ];
 
+const certifications = [
+  {
+    title: 'Oracle Certified Professional',
+    subtitle: 'Java SE 17 Developer',
+    issuer: 'Oracle Corporation',
+    icon: '☕',
+    color: '#f89820',
+    borderColor: 'rgba(248, 152, 32, 0.35)',
+    bgGradient: 'linear-gradient(135deg, rgba(248,152,32,0.08), rgba(255,215,0,0.05), rgba(139,92,246,0.05))',
+    iconGradient: 'linear-gradient(135deg, #f89820, #ffd700)',
+    boxShadow: '0 0 40px rgba(248,152,32,0.1)',
+    iconShadow: '0 0 30px rgba(248,152,32,0.5)',
+    tagBg: 'rgba(248,152,32,0.12)',
+    tagBorder: 'rgba(248,152,32,0.3)',
+    tags: ['Java SE 17', 'OCP Certified', 'Oracle', 'Professional'],
+  },
+  {
+    title: 'Oracle Certified Foundations Associate',
+    subtitle: 'Oracle Cloud Infrastructure 2025',
+    issuer: 'Oracle University',
+    icon: '☁️',
+    color: '#e53935',
+    borderColor: 'rgba(229, 57, 53, 0.35)',
+    bgGradient: 'linear-gradient(135deg, rgba(229,57,53,0.08), rgba(255,138,101,0.05), rgba(139,92,246,0.05))',
+    iconGradient: 'linear-gradient(135deg, #e53935, #ff8a65)',
+    boxShadow: '0 0 40px rgba(229,57,53,0.1)',
+    iconShadow: '0 0 30px rgba(229,57,53,0.5)',
+    tagBg: 'rgba(229,57,53,0.12)',
+    tagBorder: 'rgba(229,57,53,0.3)',
+    tags: ['OCI 2025', 'Cloud', 'Oracle', 'Foundations'],
+  }
+];
+
 const AchievementCard = ({ achievement, index }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-50px' });
@@ -248,58 +281,62 @@ const Achievements = () => {
           </h2>
           <div className="section-divider" style={{ background: 'linear-gradient(90deg, #f89820, #ffd700)' }} />
 
-          <motion.div
-            whileHover={{ scale: 1.01, y: -4 }}
-            className="glass"
-            style={{
-              padding: '32px',
-              borderRadius: '20px',
-              border: '1px solid rgba(248, 152, 32, 0.35)',
-              background: 'linear-gradient(135deg, rgba(248,152,32,0.08), rgba(255,215,0,0.05), rgba(139,92,246,0.05))',
-              display: 'flex',
-              gap: '32px',
-              alignItems: 'center',
-              maxWidth: '700px',
-              boxShadow: '0 0 40px rgba(248,152,32,0.1)',
-              cursor: 'default',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            {/* Oracle logo representation */}
-            <div style={{
-              width: 80, height: 80, borderRadius: '16px', flexShrink: 0,
-              background: 'linear-gradient(135deg, #f89820, #ffd700)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '2.5rem',
-              boxShadow: '0 0 30px rgba(248,152,32,0.5)',
-            }}>
-              ☕
-            </div>
-            <div>
-              <div style={{ fontFamily: 'Orbitron, monospace', fontWeight: 800, fontSize: '1.1rem', color: '#f89820', marginBottom: '6px' }}>
-                Oracle Certified Professional
-              </div>
-              <div style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
-                Java SE 17 Developer
-              </div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '12px' }}>Oracle Corporation</div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                {['Java SE 17', 'OCP Certified', 'Oracle', 'Professional'].map((tag) => (
-                  <span key={tag} style={{
-                    padding: '3px 10px',
-                    background: 'rgba(248,152,32,0.12)',
-                    border: '1px solid rgba(248,152,32,0.3)',
-                    borderRadius: '20px',
-                    fontSize: '0.65rem',
-                    color: '#f89820',
-                    fontFamily: 'JetBrains Mono, monospace',
-                  }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            {certifications.map((cert, i) => (
+              <motion.div
+                key={cert.title + i}
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="glass cert-card"
+                style={{
+                  padding: '32px',
+                  borderRadius: '20px',
+                  border: `1px solid ${cert.borderColor}`,
+                  background: cert.bgGradient,
+                  display: 'flex',
+                  gap: '24px',
+                  alignItems: 'center',
+                  boxShadow: cert.boxShadow,
+                  cursor: 'default',
+                  transition: 'all 0.3s ease',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <div style={{
+                  width: 70, height: 70, borderRadius: '16px', flexShrink: 0,
+                  background: cert.iconGradient,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '2.2rem',
+                  boxShadow: cert.iconShadow,
+                }}>
+                  {cert.icon}
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'Orbitron, monospace', fontWeight: 800, fontSize: '1rem', color: cert.color, marginBottom: '4px' }}>
+                    {cert.title}
+                  </div>
+                  <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
+                    {cert.subtitle}
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '12px' }}>{cert.issuer}</div>
+                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                    {cert.tags.map((tag) => (
+                      <span key={tag} style={{
+                        padding: '4px 10px',
+                        background: cert.tagBg,
+                        border: `1px solid ${cert.tagBorder}`,
+                        borderRadius: '20px',
+                        fontSize: '0.65rem',
+                        color: cert.color,
+                        fontFamily: 'JetBrains Mono, monospace',
+                      }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

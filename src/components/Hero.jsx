@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaArrowRight, FaCode } from 'react-icons/fa';
 import { SiReact, SiNodedotjs, SiMongodb, SiPython, SiJavascript, SiThreedotjs } from 'react-icons/si';
+import profilePhoto from '../assets/profile.jpg';
 
 const floatingIcons = [
   { Icon: SiReact, color: '#61dafb', style: { top: '15%', left: '8%' } },
@@ -97,12 +98,7 @@ const Hero = () => {
       ))}
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '48px',
-          alignItems: 'center',
-        }}>
+        <div className="hero-grid">
           {/* Left - Text Content */}
           <div>
             {/* Status badge */}
@@ -258,18 +254,15 @@ const Hero = () => {
                 }}
               />
 
-              {/* Profile image placeholder */}
+              {/* Real Profile Photo */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
                   width: '100%', height: '100%',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.2), rgba(236,72,153,0.1))',
                   border: '3px solid rgba(0,212,255,0.4)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '6rem',
-                  boxShadow: '0 0 60px rgba(0,212,255,0.3), 0 0 120px rgba(139,92,246,0.2), inset 0 0 60px rgba(0,212,255,0.05)',
+                  boxShadow: '0 0 60px rgba(0,212,255,0.3), 0 0 120px rgba(139,92,246,0.2)',
                   overflow: 'hidden',
                   position: 'relative',
                 }}
@@ -277,11 +270,23 @@ const Hero = () => {
                 {/* Holographic overlay */}
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(135deg, transparent 30%, rgba(0,212,255,0.05) 50%, transparent 70%)',
+                  background: 'linear-gradient(135deg, transparent 40%, rgba(0,212,255,0.08) 50%, transparent 60%)',
                   animation: 'shimmer 3s infinite linear',
                   backgroundSize: '200% 100%',
+                  zIndex: 2,
+                  pointerEvents: 'none',
                 }} />
-                <span style={{ fontSize: '7rem', filter: 'grayscale(0.3)', zIndex: 1, userSelect: 'none' }}>👨‍💻</span>
+                <img
+                  src={profilePhoto}
+                  alt="Haris P M - Full Stack Developer"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 60%',
+                    display: 'block',
+                  }}
+                />
               </motion.div>
 
               {/* Floating badges */}
@@ -335,8 +340,39 @@ const Hero = () => {
       </div>
 
       <style>{`
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 48px;
+          align-items: center;
+        }
         @media (max-width: 900px) {
-          .hero-avatar-container { display: none !important; }
+          .hero-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+          .hero-avatar-container {
+            display: flex !important;
+            justify-content: center;
+            order: -1;
+            margin-bottom: 16px;
+          }
+          .hero-avatar-container > div {
+            width: 200px !important;
+            height: 200px !important;
+          }
+          .hero-grid > div:first-child > div:nth-child(4) {
+            justify-content: center;
+          }
+          .hero-grid > div:first-child > div:last-child {
+            justify-content: center;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-avatar-container > div {
+            width: 160px !important;
+            height: 160px !important;
+          }
         }
       `}</style>
     </section>

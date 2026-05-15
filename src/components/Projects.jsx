@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaBrain, FaPhone, FaHeartbeat, FaUsers } from 'react-icons/fa';
-import { SiReact, SiNodedotjs, SiMongodb, SiPython, SiThreedotjs, SiExpress, SiBootstrap, SiIonic } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaBrain, FaPhone, FaHeartbeat, FaUsers, FaMapMarkedAlt, FaTruck, FaDatabase, FaServer, FaCalendarCheck } from 'react-icons/fa';
+import { SiReact, SiNodedotjs, SiMongodb, SiPython, SiThreedotjs, SiExpress, SiBootstrap, SiIonic, SiPandas } from 'react-icons/si';
 
 const projects = [
   {
@@ -86,6 +86,49 @@ const projects = [
     github: 'https://github.com/haris-p-m',
     demo: '#',
     featured: true,
+  },
+  {
+    id: 5,
+    title: 'Equal Miles',
+    subtitle: 'Smart Logistics Optimization',
+    description: 'A smart logistics platform utilizing Machine Learning algorithms to distribute delivery routes equally among personnel by analyzing travel distance, route complexity, and workload to maximize fairness and efficiency.',
+    tech: [
+      { name: 'Python', Icon: SiPython, color: '#3776ab' },
+      { name: 'Machine Learning', Icon: FaBrain, color: '#ff6f00' },
+      { name: 'React.js', Icon: SiReact, color: '#61dafb' },
+      { name: 'Node.js', Icon: SiNodedotjs, color: '#68a063' },
+      { name: 'MongoDB', Icon: SiMongodb, color: '#47a248' },
+      { name: 'Google Maps API', Icon: FaMapMarkedAlt, color: '#ea4335' },
+    ],
+    icon: <FaTruck />,
+    color: '#f59e0b',
+    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(236,72,153,0.15))',
+    borderColor: 'rgba(245,158,11,0.3)',
+    highlights: ['ML Route Optimization', 'Workload Balancing', 'Fair Effort Distribution', 'Delivery Efficiency'],
+    github: 'https://github.com/haris-p-m',
+    demo: '#',
+    featured: true,
+  },
+  {
+    id: 6,
+    title: 'Seminar Hall & CC Booking System',
+    subtitle: 'Automated Reservation Platform',
+    description: 'Developed a full-stack booking management platform with a React.js frontend and Python-based backend for handling seminar hall and computer center reservations. The system automates scheduling, detects booking conflicts, and uses Pandas for efficient data management and analysis.',
+    tech: [
+      { name: 'React.js', Icon: SiReact, color: '#61dafb' },
+      { name: 'Python', Icon: SiPython, color: '#3776ab' },
+      { name: 'Pandas', Icon: SiPandas, color: '#ffffff' },
+      { name: 'Backend APIs', Icon: FaServer, color: '#ffffff' },
+      { name: 'Database Management', Icon: FaDatabase, color: '#47a248' },
+    ],
+    icon: <FaCalendarCheck />,
+    color: '#a855f7',
+    gradient: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(0,212,255,0.15))',
+    borderColor: 'rgba(168,85,247,0.3)',
+    highlights: ['Automated Scheduling', 'Conflict Detection', 'Data Analysis', 'Full-stack Platform'],
+    github: 'https://github.com/haris-p-m',
+    demo: '#',
+    featured: false,
   },
 ];
 
@@ -175,13 +218,11 @@ const ProjectCard = ({ project, index }) => {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
             {project.highlights.map((h) => (
               <span key={h} style={{
-                padding: '4px 10px',
-                background: `${project.color}10`,
-                border: `1px solid ${project.color}30`,
-                borderRadius: '20px',
-                fontSize: '0.7rem',
+                padding: '4px 0px',
+                marginRight: '12px',
+                fontSize: '0.75rem',
                 color: project.color,
-                fontWeight: 500,
+                fontWeight: 600,
               }}>
                 {h}
               </span>

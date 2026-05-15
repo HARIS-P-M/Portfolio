@@ -113,7 +113,7 @@ const Contact = () => {
           <p className="section-subtitle">I&apos;m always open to new opportunities and collaborations</p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '48px', alignItems: 'start' }}>
+        <div className="contact-grid">
 
           {/* ── Left – Info ──────────────────────────────── */}
           <div>
@@ -312,9 +312,16 @@ const Contact = () => {
       </div>
 
       <style>{`
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: 48px;
+          align-items: start;
+        }
         @media (max-width: 900px) {
-          #contact .container > div:last-child {
-            grid-template-columns: 1fr !important;
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
           }
         }
       `}</style>

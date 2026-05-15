@@ -12,7 +12,7 @@ const passions = [
 const stats = [
   { value: '5+', label: 'Projects Built' },
   { value: '2+', label: 'Hackathon Awards' },
-  { value: '1', label: 'Oracle Certification' },
+  { value: '2', label: 'Oracle Certifications' },
   { value: '2', label: 'Leadership Roles' },
 ];
 
@@ -46,7 +46,7 @@ const About = () => {
             <div className="section-divider" />
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+          <div className="about-grid">
             {/* Left - Description */}
             <div>
               <motion.div variants={itemVariants} className="glass" style={{ padding: '32px', marginBottom: '24px', animation: 'borderGlow 4s ease-in-out infinite' }}>
@@ -72,7 +72,7 @@ const About = () => {
               </motion.div>
 
               {/* Quick facts */}
-              <motion.div variants={itemVariants} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <motion.div variants={itemVariants} className="about-facts-grid">
                 {[
                   { label: 'Location', value: 'Perundurai, Tamil Nadu' },
                   { label: 'College', value: 'Kongu Engineering College' },
@@ -96,7 +96,7 @@ const About = () => {
               {/* Passion cards */}
               <motion.div variants={itemVariants} style={{ marginBottom: '32px' }}>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: 500 }}>WHAT I LOVE BUILDING:</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="about-passions-grid">
                   {passions.map(({ icon, label, color, desc }) => (
                     <motion.div
                       key={label}
@@ -114,7 +114,7 @@ const About = () => {
 
               {/* Stats */}
               <motion.div variants={itemVariants} className="glass" style={{ padding: '24px', borderRadius: '16px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', textAlign: 'center' }}>
+                <div className="about-stats-grid">
                   {stats.map(({ value, label }) => (
                     <div key={label}>
                       <div style={{ fontFamily: 'Orbitron, monospace', fontSize: '1.8rem', fontWeight: 900, background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
@@ -153,9 +153,43 @@ const About = () => {
       </div>
 
       <style>{`
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: start;
+        }
+        .about-facts-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .about-passions-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .about-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 16px;
+          text-align: center;
+        }
         @media (max-width: 900px) {
-          #about .container > div > div:last-child {
-            grid-template-columns: 1fr !important;
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+        }
+        @media (max-width: 480px) {
+          .about-facts-grid {
+            grid-template-columns: 1fr;
+          }
+          .about-passions-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+          .about-stats-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
       `}</style>
