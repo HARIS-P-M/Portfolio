@@ -41,8 +41,7 @@ const LoadingScreen = ({ onComplete }) => {
           >
             <div style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 900, letterSpacing: '0.1em' }}>
               <span className="gradient-text">HARIS</span>
-              <span style={{ color: 'rgba(255,255,255,0.2)' }}>.</span>
-              <span style={{ color: 'var(--accent-purple)' }}>PM</span>
+              <span style={{ color: 'var(--accent-purple)', letterSpacing: '0.2em' }}> PM</span>
             </div>
             <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.9rem', color: 'var(--accent-blue)', letterSpacing: '0.3em', marginTop: '8px' }}>
               {'// INITIALIZING PORTFOLIO...'}

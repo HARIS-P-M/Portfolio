@@ -49,7 +49,7 @@ const FloatingWidget = () => {
               </div>
               <div>
                 <div style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-blue)' }}>AI Assistant</div>
-                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>HARIS.PM</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>HARIS.P.M</div>
               </div>
             </div>
 
@@ -69,7 +69,7 @@ const FloatingWidget = () => {
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {[
                 { icon: <FaCode />, label: 'Projects', href: '#projects' },
-                { icon: <FaGithub />, label: 'GitHub', href: 'https://github.com/haris-p-m' },
+                { icon: <FaGithub />, label: 'GitHub', href: 'https://github.com/harispm' },
                 { icon: <FaEnvelope />, label: 'Contact', href: '#contact' },
               ].map(({ icon, label, href }) => (
                 <a
