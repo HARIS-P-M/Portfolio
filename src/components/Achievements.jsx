@@ -10,17 +10,17 @@ const achievements = [
     icon: <FaTrophy />,
     color: '#ffd700',
     glow: 'rgba(255, 215, 0, 0.4)',
-    year: '2023',
+    year: '2025',
     desc: 'Won first place in the inter-college hackathon with an innovative tech solution.',
   },
   {
     rank: '2nd',
     title: 'Vision Reel',
-    event: 'Reels Competition',
+    event: 'Mini Hackathon',
     icon: <FaFilm />,
     color: 'var(--accent-blue)',
     glow: 'rgba(0, 212, 255, 0.4)',
-    year: '2023',
+    year: '2024',
     desc: 'Secured second place in the creative vision reel competition.',
   },
   {
@@ -40,7 +40,7 @@ const achievements = [
     icon: <FaGamepad />,
     color: 'var(--accent-pink)',
     glow: 'rgba(236, 72, 153, 0.4)',
-    year: '2024',
+    year: '2025',
     desc: 'Dominated the Esports championship at VIT\'s NEXCODIA national event.',
   },
   {
@@ -50,7 +50,7 @@ const achievements = [
     icon: <FaFilm />,
     color: 'var(--accent-cyan)',
     glow: 'rgba(6, 182, 212, 0.4)',
-    year: '2024',
+    year: '2023',
     desc: 'Runner-up in the Reels Making Competition with viral-style creative content.',
   },
 ];
@@ -318,7 +318,7 @@ const Achievements = () => {
                     {cert.subtitle}
                   </div>
                   <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '12px' }}>{cert.issuer}</div>
-                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                  <div className="cert-tags" style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                     {cert.tags.map((tag) => (
                       <span key={tag} style={{
                         padding: '4px 10px',
@@ -339,6 +339,18 @@ const Achievements = () => {
           </div>
         </motion.div>
       </div>
+      <style>{`
+        @media (max-width: 600px) {
+          .cert-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 24px !important;
+          }
+          .cert-card .cert-tags {
+            justify-content: center;
+          }
+        }
+      `}</style>
     </section>
   );
 };

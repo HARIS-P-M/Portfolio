@@ -5,16 +5,15 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{
+    <footer className="footer" style={{
       borderTop: '1px solid rgba(0,212,255,0.1)',
       background: 'rgba(2,4,8,0.9)',
       backdropFilter: 'blur(20px)',
-      padding: '40px 24px',
     }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
+        <div className="footer-content">
           {/* Logo */}
-          <motion.div whileHover={{ scale: 1.05 }} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <motion.div className="footer-logo" whileHover={{ scale: 1.05 }} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{
               width: 36, height: 36,
               background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
@@ -28,7 +27,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Center */}
-          <div style={{ textAlign: 'center' }}>
+          <div className="footer-center" style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
               Built with <FaHeart style={{ color: 'var(--accent-pink)' }} /> and <FaCode style={{ color: 'var(--accent-blue)' }} /> by Haris P M
             </div>
@@ -38,7 +37,7 @@ const Footer = () => {
           </div>
 
           {/* Social */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div className="footer-social" style={{ display: 'flex', gap: '12px' }}>
             {[
               { Icon: FaGithub, href: 'https://github.com/haris-p-m', label: 'GitHub' },
               { Icon: FaLinkedin, href: 'https://linkedin.com/in/haris-p-m', label: 'LinkedIn' },
@@ -72,7 +71,7 @@ const Footer = () => {
 
         {/* Tech credits */}
         <div style={{ marginTop: '16px', textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          {['React.js', 'Framer Motion', 'Three.js', 'GSAP', 'Vite'].map((tech) => (
+          {['React.js', 'Framer Motion', 'MongoDB', 'Express.js', 'Node.js'].map((tech) => (
             <span key={tech} style={{
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: '0.65rem', color: 'var(--text-muted)',
@@ -85,6 +84,40 @@ const Footer = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        .footer {
+          padding: 40px 24px;
+        }
+        .footer-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 24px;
+        }
+        @media (max-width: 768px) {
+          .footer {
+            padding: 24px 20px !important;
+          }
+          .footer-content {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+          }
+          .footer-logo, .footer-center, .footer-social {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+          }
+          .footer-center {
+            flex-direction: column !important;
+          }
+          .footer-logo, .footer-social {
+            flex-direction: row !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 };
